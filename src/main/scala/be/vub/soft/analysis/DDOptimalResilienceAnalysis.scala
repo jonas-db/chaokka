@@ -135,7 +135,7 @@ class DDOptimalResilienceAnalysis(perturbation: Perturbation) extends DDResilien
 
         log("------------------------------------------------")
 
-        cg.print(visited)
+        //cg.print(visited)
 
         visited.map(_._2)
     }
