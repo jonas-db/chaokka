@@ -1,0 +1,12 @@
+output
+target
+project/target
+tests.index
+lib
+target/
+/target
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+.idea
