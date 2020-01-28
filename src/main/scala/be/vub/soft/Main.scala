@@ -22,13 +22,17 @@ object Main {
             val suite = if(args.length > 1) Some(args(1)) else None
             val test = if(args.length > 2) Some(args(2)) else None
 
-            // Runner for: sbt "run examples/SystemUnderTest2"
-            // We are searching for defects in persistence recovery
+            // sbt "run examples/SystemUnderTest2"
+            // We are searching for defects in persistence recovery in this example
+            // The solution will be:
+            // defect in ActorC after message Update from ActorB with hashcode 266369878
             val runner = new ResilienceAnalysisRunner(args(0), suite, test)
             runner.initialize()
             runner.analyse(test => new DDOptimalResilienceAnalysis(PersistentActorRestart), Runs)
 
-            // Paper, run either for performance or overhead
+            // Paper evaluation, run either for performance or overhead
+            // sbt "run examples/Evaluation"
+            // The test name indicates which defects the analysis searches for.
             /*
                 // Performance
                 val runner = new ResilienceAnalysisRunnerPaper(args(0), suite, test)
