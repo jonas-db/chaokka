@@ -239,8 +239,6 @@ class ResilienceAnalysisRunner(target: String, suite: Option[String] = None, tes
 
                             println(s"Running initial iteration for '$test'")
 
-                            println(cmd)
-
                             val initial = execute(test, suite, 0, cmd, "", perturbationFolderForRun)
                             var steps: List[(Status, Set[String])] = List.empty
 

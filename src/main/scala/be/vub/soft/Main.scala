@@ -1,7 +1,7 @@
 package be.vub.soft
 
 import be.vub.soft.analysis.{DDOptimalResilienceAnalysis, DDResilienceAnalysis, OverheadAnalysis, RandomResilienceAnalysis}
-import be.vub.soft.perturbations.AtLeastOnceDeliveryDuplication
+import be.vub.soft.perturbations.{AtLeastOnceDeliveryDuplication, PersistentActorRestart}
 import be.vub.soft.runner.{ResilienceAnalysisRunner, ResilienceAnalysisRunnerPaper}
 
 object Main {
@@ -22,9 +22,11 @@ object Main {
             val suite = if(args.length > 1) Some(args(1)) else None
             val test = if(args.length > 2) Some(args(2)) else None
 
+            // Runner for: sbt "run examples/SystemUnderTest2"
+            // We are searching for defects in persistence recovery
             val runner = new ResilienceAnalysisRunner(args(0), suite, test)
             runner.initialize()
-            runner.analyse(test => new DDOptimalResilienceAnalysis(AtLeastOnceDeliveryDuplication), Runs)
+            runner.analyse(test => new DDOptimalResilienceAnalysis(PersistentActorRestart), Runs)
 
             // Paper, run either for performance or overhead
             /*
