@@ -21,11 +21,12 @@ For instance, to asses the resilience of the second example:
 
 ## Limitations
 As Chaokka is a research prototype, it does not work on every system and test suite:
-- Only works for actor systems that are deterministic in the message and actors it creates.
+- Only works for actor systems that are deterministic in the messages and actors it creates.
 - Only local actor systems can be used. However, due to Akka's location transparency this should not be an issue to reconfigure.
 - Every actor needs a unique name.
+- Test outcome is used as an oracle to assess resilience and thus highly depends on the quality of tests
 - Tests are expected to follow a format where:
--- one message is sent to trigger the execution of the system
--- a blocking operation to wait until the system is done
--- one or more assertions that asserts the state of the system
+    - one message is sent to trigger the execution of the system
+    - a blocking operation to wait until the system is done
+    - one or more assertions that asserts the state of the system
 
