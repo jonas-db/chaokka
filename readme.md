@@ -17,7 +17,15 @@ The exploration strategies can be found in `src/main/scala/be/vub/soft/analysis`
 Two examples can be found in the `/examples` directory.
 
 For instance, to asses the resilience of the second example:
-> sbt "run examples/SystemUnderTest2"
+
+```
+# first compile and test SystemUnderTest2
+cd examples/SystemUnderTest2
+sbt test 
+cd ../../
+# now run chaokka
+sbt "run examples/SystemUnderTest2"
+```
 
 ## Limitations
 As Chaokka is a research prototype, it does not work on every system and test suite:
